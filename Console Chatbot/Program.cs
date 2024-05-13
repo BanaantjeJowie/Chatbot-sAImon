@@ -20,11 +20,6 @@ namespace Console_Chatbot
             while (restartConversation)
             {
                 BotToString.WriteBot("Welcome to the first version of...", 10, "\u001b[34m");
-                BotToString.WriteBot(".", 10, "\u001b[34m");
-                Thread.Sleep(1000);
-                BotToString.WriteBot(".", 10, "\u001b[34m");
-                Thread.Sleep(1000);
-                BotToString.WriteBot(".", 10, "\u001b[34m");
                 Thread.Sleep(1000);
                 Console.WriteLine("\u001b[32m ________  ________  ___  _____ ______   ________  ________      ");
                 Console.WriteLine("\u001b[32m |\\   ____\\|\\   __  \\|\\  \\|\\   _ \\  _   \\|\\   __  \\|\\   ___  \\    ");
@@ -68,7 +63,7 @@ namespace Console_Chatbot
 
                 // Adding a delay with "..." while waiting
                 Thread.Sleep(1000);
-                BotToString.WriteBot("...", 10, "\u001b[34m");
+               
 
                 bool responseReceived = false;
 
@@ -103,7 +98,6 @@ namespace Console_Chatbot
 
                 // Adding a delay with "..." while waiting
                 Thread.Sleep(1000);
-                BotToString.WriteBot("...", 10, "\u001b[34m");
                 BotToString.WriteBot("What is your name?", 10, "\u001b[34m");
 
                 // Loop for asking what the user's name is
@@ -147,7 +141,6 @@ namespace Console_Chatbot
 
                 // Adding a delay with "..." while waiting
                 Thread.Sleep(1000);
-                BotToString.WriteBot("...", 10, "\u001b[34m");
                 BotToString.WriteBot("How is the weather today?", 10, "\u001b[34m");
                 // loop for asking what weather the user is experiencing 
                 bool weatherReceived = false;
@@ -167,7 +160,7 @@ namespace Console_Chatbot
                     // Check if the user has entered weather
                     if (UserInput.Length > 0)
                     {
-                        if (UserInput.ToLower() == "sunny" || UserInput.ToLower() == "nice")
+                        if (UserInput.ToLower() == "sunny" || UserInput.ToLower() == "nice" || UserInput.ToLower()== "good")
                             BotToString.WriteBot("That's nice to hear it's " + UserInput + " today! \n Enjoy the sunshine but don't forget to wear sunscreen!", 10, "\u001b[34m");
                         else if (UserInput.ToLower() == "rainy" || UserInput.ToLower() == "cloudy" || UserInput.ToLower() == "windy")
                             BotToString.WriteBot("I'm sorry to hear it's " + UserInput + " today.", 10, "\u001b[34m");

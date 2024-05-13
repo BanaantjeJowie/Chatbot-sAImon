@@ -11,14 +11,14 @@ namespace ClassLibraryChatbot
         //method to write a string to the console in blue and with a delay
         public static void WriteBot(string text, int delay, string color)
         {
-
+            Console.WriteLine("...");
             foreach (char c in text)
             {
                 Console.Write(color + c);
                 System.Threading.Thread.Sleep(delay);
             }
             Console.WriteLine();
-
+            Console.WriteLine("...");
         }
 
         public static bool CheckNWord(string text)
@@ -31,7 +31,7 @@ namespace ClassLibraryChatbot
                     return true;
                 }
             }
-            return false; // If none of the nWords are found in the text
+            return false; 
         }
 
 
