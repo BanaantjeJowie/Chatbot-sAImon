@@ -22,7 +22,9 @@ namespace ClassLibraryChatbot
         }
 
 
-        //this method checks if the user input contains any of the n-words and is only for sam and not for the user
+        //this method checks if the user input contains any of the n-words and is only for sam and not for the average user
+        //it is not used in the final version of the chatbot
+        //Sam if you re
         public static bool CheckNWord(string text)
         {
             string[] nWords = { "nigger", "neger", "nigga", "monkey",  };
