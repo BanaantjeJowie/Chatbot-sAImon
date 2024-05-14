@@ -63,7 +63,7 @@ namespace Console_Chatbot
 
                 // Adding a delay with "..." while waiting
                 Thread.Sleep(1000);
-               
+
 
                 bool responseReceived = false;
 
@@ -104,7 +104,7 @@ namespace Console_Chatbot
                 bool nameReceived = false;
                 while (!nameReceived)
                 {
-                    
+
                     string UserInput = Console.ReadLine();
 
                     // Check if the user wants to exit
@@ -123,7 +123,7 @@ namespace Console_Chatbot
                         }
                         else if (UserInput.ToLower() == "sam")
                         {
-                            BotToString.WriteBot("NIGGER? Thats a weird name? But sure i guess...", 10,"\u001b[34m");
+                            BotToString.WriteBot("NIGGER? Thats a weird name? But sure i guess...", 10, "\u001b[34m");
                             break;
                         }
                         else
@@ -147,7 +147,7 @@ namespace Console_Chatbot
 
                 while (!weatherReceived)
                 {
-                    
+
                     string UserInput = Console.ReadLine();
 
                     // Check if the user wants to exit
@@ -160,7 +160,7 @@ namespace Console_Chatbot
                     // Check if the user has entered weather
                     if (UserInput.Length > 0)
                     {
-                        if (UserInput.ToLower() == "sunny" || UserInput.ToLower() == "nice" || UserInput.ToLower()== "good")
+                        if (UserInput.ToLower() == "sunny" || UserInput.ToLower() == "nice" || UserInput.ToLower() == "good")
                             BotToString.WriteBot("That's nice to hear it's " + UserInput + " today! \n Enjoy the sunshine but don't forget to wear sunscreen!", 10, "\u001b[34m");
                         else if (UserInput.ToLower() == "rainy" || UserInput.ToLower() == "cloudy" || UserInput.ToLower() == "windy")
                             BotToString.WriteBot("I'm sorry to hear it's " + UserInput + " today.", 10, "\u001b[34m");
@@ -178,7 +178,7 @@ namespace Console_Chatbot
                             BotToString.WriteBot("I'm sorry to hear the weather is bad.", 10, "\u001b[34m");
                         else if (UserInput.ToLower() == "apocalypse")
                             BotToString.WriteBot("RUN!!! \n ", 10, "\u001b[32m");
-                      
+
                         weatherReceived = true;
                     }
                     else
@@ -186,11 +186,105 @@ namespace Console_Chatbot
                         BotToString.WriteBot("I'm sorry, I didn't catch that. Could you please tell me how the weather is today?", 10, "\u001b[34m");
                     }
                 }
+                bool wantsRandomTopic = false;
+                while (!wantsRandomTopic)
+                {
+                    // Prompt the user if they want to talk about a random topic
+                    BotToString.WriteBot("Do you want to talk about a random topic?", 10, "\u001b[34m");
+                    bool randomTopic = false;
+                    while (!randomTopic)
+                    {
+                        string userInput = Console.ReadLine();
+
+                        // Check if the user wants to exit
+                        if (userInput?.ToLower() == "bye")
+                        {
+                            BotToString.WriteBot("Exiting chatbot. Goodbye!", 10, "\u001b[34m");
+                            return; // Exit the entire program
+                        }
+
+                        // Check if the user wants to talk about a random topic
+                        if (userInput?.ToLower() == "yes" || userInput?.ToLower() == "sure" || userInput?.ToLower() == "why not")
+                        {
+                            BotToString.WriteBot("Great! Let's talk about a random topic.", 10, "\u001b[34m");
+                            randomTopic = true; // Break the inner loop
+                        }
+                        else if (userInput?.ToLower() == "no" || userInput?.ToLower() == "not now" || userInput?.ToLower() == "maybe later")
+                        {
+                            BotToString.WriteBot("That's okay! We can talk sometime else.", 10, "\u001b[34m");
+                            wantsRandomTopic = true; // Break the outer loop
+                            break; // Break the inner loop
+                        }
+                        else
+                        {
+                            BotToString.WriteBot("I'm sorry, I didn't catch that. Do you want to talk about a random topic?", 10, "\u001b[34m");
+                        }
+                    }
+
+                    if (wantsRandomTopic)
+                    {
+                        break; // Break the outer loop
+                    }
+
+                    // Loop for asking the user what topic they want to talk about using the Subjects class
+                    Subjects subjects = new Subjects();
+                    bool wantsToTalk = false;
+                    string randomSubject = "";
+
+                    while (!wantsToTalk)
+                    {
+                        Random random = new Random();
+                        int randomIndex = random.Next(subjects.subjectQuestions.Count);
+                        randomSubject = subjects.subjectQuestions.Keys.ToArray()[randomIndex];
+
+                        // Prompt the user to talk about the randomly chosen subject
+                        BotToString.WriteBot("Do you want to talk about " + randomSubject + "?", 10, "\u001b[34m");
+                        string userInput = Console.ReadLine();
+
+                        // Check if the user wants to exit
+                        if (userInput?.ToLower() == "bye")
+                        {
+                            BotToString.WriteBot("Exiting chatbot. Goodbye!", 10, "\u001b[34m");
+                            return; // Exit the entire program
+                        }
+
+                        // Check if the user wants to talk about the random topic
+                        if (userInput?.ToLower() == "yes" || userInput?.ToLower() == "sure" || userInput?.ToLower() == "why not" || userInput?.ToLower() == "ok")
+                        {
+                            BotToString.WriteBot("Great! Let's talk about " + randomSubject + ".", 10, "\u001b[34m");
+                            wantsToTalk = true; // Break the loop
+                        }
+                        else if (userInput?.ToLower() == "no" || userInput?.ToLower() == "not now" || userInput?.ToLower() == "maybe later")
+                        {
+                            BotToString.WriteBot("That's okay! Let me choose another topic.", 10, "\u001b[34m");
+                        }
+                        else
+                        {
+                            BotToString.WriteBot("I'm sorry, I didn't catch that.", 10, "\u001b[34m");
+                        }
+                    }
+
+                    //ask the user a random question from the chosen subject and choose to agree or disagree
+
+                    
+                }
+
+
                 // Ask if the user wants to restart the conversation
                 BotToString.WriteBot("Do you want to restart the conversation? (yes/no)", 10, "\u001b[34m");
                 string restartInput = Console.ReadLine().ToLower();
 
-                restartConversation = restartInput == "yes";
+                if (restartConversation = restartInput == "yes")
+                {
+                    BotToString.WriteBot("Great! Let's restart the conversation.", 10, "\u001b[34m");
+                    Console.Clear();
+                }
+                else
+                {
+                    BotToString.WriteBot("Exiting chatbot. Goodbye!", 10, "\u001b[34m");
+                    return; // Exit the entire program
+                }
+
             }
         }
     }

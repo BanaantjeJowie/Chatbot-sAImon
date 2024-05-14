@@ -21,9 +21,11 @@ namespace ClassLibraryChatbot
             Console.WriteLine("...");
         }
 
+
+        //this method checks if the user input contains any of the n-words and is only for sam and not for the user
         public static bool CheckNWord(string text)
         {
-            string[] nWords = { "nigger", "neger", "nigga", "monkey" };
+            string[] nWords = { "nigger", "neger", "nigga", "monkey",  };
             foreach (string nWord in nWords)
             {
                 if (text.ToLower().Contains(nWord))
@@ -34,6 +36,7 @@ namespace ClassLibraryChatbot
             return false; 
         }
 
+        
 
     }
 }
